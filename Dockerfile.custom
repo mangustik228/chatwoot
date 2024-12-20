@@ -1,0 +1,2 @@
+FROM chatwoot/chatwoot:latest
+COPY app/views/mailers/conversation_reply_mailer/email_reply.html.erb /app/app/views/mailers/conversation_reply_mailer/email_reply.html.erb
