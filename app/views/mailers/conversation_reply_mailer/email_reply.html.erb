@@ -1,38 +1,24 @@
 <% if @message.attachments.present? %>
   <div style="
-    margin-bottom: 1.5em;
+    margin-bottom: 20px;
     padding: 12px 15px;
     background-color: #f8f9fa;
     border-left: 3px solid #1f93ff;
     border-radius: 4px;
   ">
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <% @message.attachments.each do |attachment| %>
-        <div style="
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 13px;
-        ">
-          <span style="color: #68737d;">•</span>
-          <a href="<%= attachment.file_url %>" 
-             target="_blank"
-             style="
-               color: #1f93ff;
-               text-decoration: none;
-               &:hover {
-                 text-decoration: underline;
-               }
-             "
-          >
-            <%= attachment.file.filename %>
-          </a>
-        </div>
-      <% end %>
-    </div>
+    <% @message.attachments.each do |attachment| %>
+      <div style="margin-bottom: 12px;">
+        <span style="color: #68737d; margin-right: 8px;">•</span>
+        <a href="<%= attachment.file_url %>"
+           target="_blank"
+           style="color: #1f93ff; text-decoration: none;"
+        >
+          <%= attachment.file.filename %>
+        </a>
+      </div>
+    <% end %>
   </div>
 <% end %>
-
 <% if @message.content %>
   <%= ChatwootMarkdownRenderer.new(@message.content).render_message %>
 <% end %>
